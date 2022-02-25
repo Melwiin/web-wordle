@@ -1,5 +1,7 @@
 var wordle_grid = document.getElementById("wordle-grid");
 
+var word = "ULTRA"
+
 var curr_row = 0;
 
 var letters = 5;
@@ -42,6 +44,50 @@ function updateInput() {
     }
 }
 
+function checkInput() {
+    var cinput = input;
+    var cword = word;
+    var result = "";
+
+    for(var i = 0; i < letters.length; i++) result+="W";
+
+    for(var i = 0; i < letters.length; i++) {
+        if(cinput.charAt(i) == cword.charAt(i)) {
+            cword = cword.replaceAt(i, '#');
+            cinput = cinput.replaceAt(i, '#');
+            result = result.replaceAt(i, 'R');
+        }
+    }
+
+    for(var i = 0; i < letters; i++) {
+        for(var w = 0; w < letters; w++) {
+            if(cinput.charAt(i) == '#') {
+                continue;
+            }else if(cinput.charAt(i) == cword.charAt(i)) {
+                cword = cword.replaceAt(w, '#');
+                cinput = cinput.replaceAt(i, '#');
+                result = result.replaceAt(i, 'S');
+
+                continue;
+            }else {
+
+            }
+        }
+
+        for(let i = 0; i < letters; i++) {
+            if(result.charAt(i) == 'R'){
+                wordle_grid.children.item(curr_row).children.item(i).classList.add("green");
+            }else if(result.charAt(i) == 'S'){
+                wordle_grid.children.item(curr_row).children.item(i).classList.add("yellow");
+            }else {
+                wordle_grid.children.item(curr_row).children.item(i).classList.add("grey");
+            }
+        }
+    }
+
+    console.log(result);
+}
+
 document.body.addEventListener("keydown", (e) => {
     if(input.length < letters){
         if(isLetter(e.key)) {
@@ -49,6 +95,7 @@ document.body.addEventListener("keydown", (e) => {
             updateInput();
         }
     }else if(e.key == "Enter") {
+        checkInput();
         curr_row++;
         input = "";
     }
@@ -62,4 +109,8 @@ document.body.addEventListener("keydown", (e) => {
 
 function isLetter(str) {
     return str.length === 1 && str.match(/[a-z]/i);
+}
+
+String.prototype.replaceAt = function(index, replacement) {
+    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
