@@ -9,10 +9,24 @@ for (let r = 0; r < liste.length; r++) {
   if (button_name.innerHTML == "Delete") {
     button_name.id = "delete"
   }
-  if (button_name.innerHTML == "Enter") {
+  else if (button_name.innerHTML == "Enter") {
     button_name.id = "enter"
   }
+  button_name.class = "button"
 
   v_keyboard.appendChild(button_name);
 }
+
+
+function getKeyFromButton(button){
+  button.
+}
+
+/*EVENT LISTENER*/
+const bt = document.getElementsByClassName("button");
+bt.forEach.addEventListener("click", pressKey(getKeyFromButton(bt), false));
+
+
+
+
 
