@@ -21,3 +21,19 @@
     font-size: 24px;
     color: rgb(104, 104, 104);
 }
+
+.input.grey {
+    background-color: rgb(208, 207, 207);
+    border-color: rgb(208, 207, 207);
+    color: white;
+}
+.input.green {
+    background-color: #79b851;
+    border-color: #79b851;
+    color: white;
+}
+.input.yellow {
+    background-color: rgb(255, 215, 82);
+    border-color: rgb(255, 215, 82);
+    color: white;
+}
