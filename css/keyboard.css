@@ -1,10 +1,6 @@
-body { 
-    background-color:white;
-
-}
-
-#timo {
-    color:blue;
+:root{
+    --button-text-color:rgb(71, 71, 71);
+    --button-hover-color:rgb(206, 206, 206);
 }
 
 #v-keyboard {
@@ -17,11 +13,19 @@ body {
 /* man kann #name_der_division dazuschreiben um alle Elemente de Division anzusprechen*/
 #v-keyboard button{
     margin:1px;
-    font-family:'Courier New', Courier, monospace;
+    font-family:'Times New Roman', Times, serif;
     font-weight: 700;
-    color: rgb(71, 71, 71);
+    font-size: large;
+    color: var(--button-text-color);
     border: 0ch;
-    border-radius: 5px;   
+    border-radius: 5px; 
+    transition:200ms ease-in-out; 
+}
+
+
+
+#v-keyboard button:hover{
+    background-color: var(--button-hover-color);
 }
 
 #delete img {
