@@ -1,6 +1,6 @@
 var wordle_grid = document.getElementById("wordle-grid");
 
-var word = "ULTRA".toUpperCase();
+var word = "";
 
 var curr_row = 0;
 
@@ -8,13 +8,38 @@ var letters = 5;
 var rows = 6;
 
 var input = "";
+var ready = false;
+var words;
 
 initialize();
 
-function initialize() {
+async function initialize() {
     input = "";
+    word = "";
     curr_row = 0;
+    ready = false;
 
+
+    await fetch('../lang/en.json')
+    .then(res => res.json())
+    .then(data => { words = data; } );
+    await selectWord();
+    await setupGrid();
+
+
+    ready = true;
+}
+
+function selectWord() {
+    var rand_word = getRandomInt(words.length);
+    while (words[rand_word].length != letters) {
+        rand_word = getRandomInt(words.length);
+    }
+    
+    word = words[rand_word].toUpperCase();
+}
+
+function setupGrid() {
     wordle_grid.innerHTML = "";
 
     for (let r = 0; r < rows; r++) 
@@ -87,22 +112,26 @@ function checkInput() {
 }
 
 document.body.addEventListener("keydown", (e) => {
+    if(ready) pressKey(e.key);
+});
+
+function pressKey(key) {
     if(input.length < letters){
-        if(isLetter(e.key)) {
-            input+=e.key.toUpperCase();
+        if(isLetter(key)) {
+            input+=key.toUpperCase();
             updateInput();
         }
-    }else if(e.key == "Enter") {
+    }else if(key == "Enter") {
         checkInput();
         curr_row++;
         input = "";
     }
 
-    if(e.key == "Backspace") {
+    if(key == "Backspace") {
         input = input.substring(0, input.length - 1);
         updateInput();
     }
-});
+}
 
 
 function isLetter(str) {
@@ -112,3 +141,7 @@ function isLetter(str) {
 String.prototype.replaceAt = function(index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
