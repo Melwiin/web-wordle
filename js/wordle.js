@@ -127,7 +127,7 @@ function pressKey(key) {
         input = "";
     }
 
-    if(key == "Backspace") {
+    if(key == "Backspace" || key == "Delete") {
         input = input.substring(0, input.length - 1);
         updateInput();
     }
