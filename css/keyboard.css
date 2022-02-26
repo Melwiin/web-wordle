@@ -24,14 +24,8 @@
     transition:200ms ease-in-out; 
 }
 
-
-
 #v-keyboard button:hover{
     background-color: var(--button-hover-color);
-}
-
-#delete img {
-    width: 30px;
 }
 
 #delete {
@@ -41,3 +35,21 @@
 #enter {
     grid-column: 10/12;
 }
+
+/* wordle word check colors for virtual keyboard */
+#v-keyboard button.grey {
+    background-color: rgb(208, 207, 207);
+    border-color: rgb(208, 207, 207);
+    color: white;
+}
+#v-keyboard button.green {
+    background-color: #79b851;
+    border-color: #79b851;
+    color: white;
+}
+#v-keyboard button.yellow {
+    background-color: rgb(255, 215, 82);
+    border-color: rgb(255, 215, 82);
+    color: white;
+}
+/* -------------------------- */
