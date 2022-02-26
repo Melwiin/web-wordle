@@ -14,6 +14,11 @@
     <div id="wordle-grid"></div>
     <div id="v-keyboard"></div>
 
+    <!-- Neustart darf kein Button sein! Sonst wird er beim Fokus + Enter drücken jedes mal neu aktiviert! -->
+    <!-- <button onclick="initialize()">Neustart</button> -->
+    <!-- Stattdessen div + click-event in Javascript: -->
+    <div id="restart-button">Neustart</div>
+
     <script src="js/wordle.js"></script>
     <script src="js/keyboard.js"></script>
   </body>

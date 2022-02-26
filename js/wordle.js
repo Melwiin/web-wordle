@@ -1,4 +1,6 @@
 var wordle_grid = document.getElementById("wordle-grid");
+var restart_button = document.getElementById("restart-button");
+restart_button.addEventListener("click", (e)=> initialize());
 
 var word = "";
 
@@ -8,7 +10,6 @@ var letters = 5;
 var rows = 6;
 
 var input = "";
-var ready = false;
 var words;
 
 initialize();
@@ -17,17 +18,14 @@ async function initialize() {
     input = "";
     word = "";
     curr_row = 0;
-    ready = false;
 
-
+    document.body.removeEventListener("click", (e)=>{});
     await fetch('../lang/en.json')
     .then(res => res.json())
     .then(data => { words = data; } );
     await selectWord();
     await setupGrid();
-
-
-    ready = true;
+    await setupEventListener();
 }
 
 function selectWord() {
@@ -111,9 +109,11 @@ function checkInput() {
     }
 }
 
-document.body.addEventListener("keydown", (e) => {
-    if(ready) pressKey(e.key);
-});
+function setupEventListener() {
+    document.body.addEventListener("keydown", (e) => {
+        pressKey(e.key);
+    });
+}
 
 function pressKey(key) {
     if(input.length < letters){
