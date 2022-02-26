@@ -20,6 +20,8 @@
     color: rgb(104, 104, 104);
 }
 
+
+/* wordle word check colors */
 .input.grey {
     background-color: rgb(208, 207, 207);
     border-color: rgb(208, 207, 207);
@@ -35,3 +37,4 @@
     border-color: rgb(255, 215, 82);
     color: white;
 }
+/* -------------------------- */
