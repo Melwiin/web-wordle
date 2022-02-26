@@ -4,21 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wordle</title>
+    <title>Wordle by Timo & Melwin</title>
 
+    <!-- Erster CSS - Import: Variablen (Theme) -->
+    <link rel="stylesheet" href="css/variables.css">
+
+    <!-- Sonstiges Styling Keyboard, Grid etc. -->
     <link rel="stylesheet" href="css/keyboard.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/wordle.css">
   </head>
   <body>
+
+    <!-- muss später in ein extra container -->
     <div id="wordle-grid"></div>
     <div id="v-keyboard"></div>
+    <!-- ---------------------------------- -->
 
     <!-- Neustart darf kein Button sein! Sonst wird er beim Fokus + Enter drücken jedes mal neu aktiviert! -->
     <!-- <button onclick="initialize()">Neustart</button> -->
     <!-- Stattdessen div + click-event in Javascript: -->
     <div id="restart-button" onclick="initialize()">Neustart</div> 
 
+    <!-- Erst wordle.js dann keyboard.js wegen pressKey() -->
     <script src="js/wordle.js"></script>
     <script src="js/keyboard.js"></script>
   </body>
