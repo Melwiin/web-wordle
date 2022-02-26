@@ -12,6 +12,7 @@ var rows = 6;
 
 var input = "";
 var words;
+var useNonExistingWords = false;
 
 initialize();
 setupEventListener();
@@ -75,6 +76,18 @@ function updateInput() {
     }
 }
 
+function wordExists() {
+    var exists = false;
+
+    words.forEach(w => {
+        if(input == w) {
+            exists = true;
+        }
+    });
+
+    return exists;
+}
+
 function checkInput() {
     var cinput = input;
     var cword = word;
@@ -127,22 +140,26 @@ function setupEventListener() {
     });
 }
 
-function pressKey(key) {
+async function pressKey(key) {
     if(input.length < letters){
         if(isLetter(key)) {
             input+=key.toLowerCase();
             updateInput();
         }
     }else if(key == "Enter") {
-        if(checkInput()) {
-            alert("Gewonnen!");
-        }else{
-            if(curr_row < rows-1) {
-                curr_row++;
-                input = "";
+       if(await wordExists() || useNonExistingWords == true) {
+            if(checkInput()) {
+                alert("Gewonnen!");
             }else{
-                alert("Verloren. Gesuchtes Wort: " + word.toUpperCase());
+                if(curr_row < rows-1) {
+                    curr_row++;
+                    input = "";
+                }else{
+                    alert("Verloren. Gesuchtes Wort: " + word.toUpperCase());
+                }
             }
+        }else{
+            alert("Word doesnt exist!");
         }
     }
 
