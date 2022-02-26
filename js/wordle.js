@@ -1,6 +1,4 @@
 var wordle_grid = document.getElementById("wordle-grid");
-// var restart_button = document.getElementById("restart-button");
-// restart_button.addEventListener("click", (e)=> initialize());
 
 var word = "";
 
@@ -11,8 +9,6 @@ var rows = 6;
 
 var input = "";
 var words;
-
-
 
 initialize();
 setupEventListener();
