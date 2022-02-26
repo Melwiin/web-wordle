@@ -1,6 +1,6 @@
 var wordle_grid = document.getElementById("wordle-grid");
-var restart_button = document.getElementById("restart-button");
-restart_button.addEventListener("click", (e)=> initialize());
+// var restart_button = document.getElementById("restart-button");
+// restart_button.addEventListener("click", (e)=> initialize());
 
 var word = "";
 
@@ -12,21 +12,25 @@ var rows = 6;
 var input = "";
 var words;
 
+
+
 initialize();
+setupEventListener();
 
 async function initialize() {
     input = "";
     word = "";
     curr_row = 0;
 
-    document.body.removeEventListener("click", (e)=>{});
     await fetch('../lang/en.json')
     .then(res => res.json())
     .then(data => { words = data; } );
     await selectWord();
     await setupGrid();
-    await setupEventListener();
+    
+    console.log("Init done");
 }
+
 
 function selectWord() {
     var rand_word = getRandomInt(words.length);
