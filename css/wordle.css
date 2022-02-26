@@ -20,6 +20,22 @@
     color: rgb(104, 104, 104);
 }
 
+.input.selected {
+    border-color: rgb(135, 135, 135);
+    animation: select 200ms forwards;
+    transition: 200ms ease-in-out;
+}
+
+@keyframes select {
+    0% {
+        transform: scale(0.6);
+    }
+    70% {
+        transform: scale(1.1);
+    }100% {
+        transform: scale(1);
+    }
+}
 
 /* wordle word check colors */
 .input.grey {

@@ -24,7 +24,7 @@ async function initialize() {
 
     await fetch('../lang/' + filename + ".json")
     .then(res => res.json())
-    .then(data => { words = data; } );
+    .then(data => { words = shuffle(data); } );
     await selectWord();
     await setupGrid();
     
@@ -34,13 +34,11 @@ async function initialize() {
 
 function selectWord() {
     for(var i = 0; i < words.length; i++) {
-        var rand_word = getRandomInt(words.length);
-        if(words[rand_word].length == letters) {
+        if(words[i].length == letters) {
+            word = words[i].toLowerCase();
             break;
         }
     }
-    
-    word = words[rand_word].toLowerCase();
 }
 
 function setupGrid() {
@@ -65,10 +63,14 @@ function setupGrid() {
 
 function updateInput() {
     for(let i = 0; i < letters; i++) {
+        var input_element = wordle_grid.children.item(curr_row).children.item(i);
+
         if(input[i] == undefined){
-            wordle_grid.children.item(curr_row).children.item(i).innerHTML = "";
+            input_element.innerHTML = "";
+            input_element.classList.remove("selected");
         }else{
-            wordle_grid.children.item(curr_row).children.item(i).innerHTML = input[i].toUpperCase();
+            input_element.innerHTML = input[i].toUpperCase();
+            input_element.classList.add("selected");
         }
     }
 }
@@ -161,4 +163,11 @@ String.prototype.replaceAt = function(index, replacement) {
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
-  }
+}
+
+function shuffle(data) {
+    return data
+        .map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+}
