@@ -16,6 +16,13 @@
   </head>
   <body>
 
+    <!-- Dient der Sprachauswahl -->
+    <select onchange="initialize()" id="language-select">
+      <option value="de">Deutsch</option>
+      <option value="en">Englisch</option>
+      <option value="de_j">Jugenwörter</option>
+    </select>
+
     <!-- muss später in ein extra container -->
     <div id="wordle-grid"></div>
     <div id="v-keyboard"></div>
@@ -23,8 +30,8 @@
 
     <!-- Neustart darf kein Button sein! Sonst wird er beim Fokus + Enter drücken jedes mal neu aktiviert! -->
     <!-- <button onclick="initialize()">Neustart</button> -->
-    <!-- Stattdessen div + click-event in Javascript: -->
-    <div id="restart-button" onclick="initialize()">Neustart</div> 
+    <!-- Stattdessen div + click-event (braucht aber styling) -->
+    <div id="restart-button" onclick="initialize()">Neustart</div> <!-- soll später in ein popup -->
 
     <!-- Erst wordle.js dann keyboard.js wegen pressKey() -->
     <script src="js/wordle.js"></script>

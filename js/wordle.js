@@ -1,6 +1,8 @@
 var wordle_grid = document.getElementById("wordle-grid");
 var v_keys = document.getElementById("v-keyboard").children;
+var lang_select = document.getElementById("language-select");
 
+var filename = "";
 var word = "";
 
 var curr_row = 0;
@@ -18,8 +20,9 @@ async function initialize() {
     input = "";
     word = "";
     curr_row = 0;
+    filename = lang_select.value;
 
-    await fetch('../lang/en.json')
+    await fetch('../lang/' + filename + ".json")
     .then(res => res.json())
     .then(data => { words = data; } );
     await selectWord();
