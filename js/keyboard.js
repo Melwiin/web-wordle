@@ -19,12 +19,14 @@ for (let r = 0; r < liste.length; r++) {
 
 
 function getKeyFromButton(button){
-  button.
+  //button.
 }
 
 /*EVENT LISTENER*/
 const bt = document.getElementsByClassName("button");
-bt.forEach.addEventListener("click", pressKey(getKeyFromButton(bt), false));
+bt.forEach.addEventListener("click", (e)=> {
+  pressKey(getKeyFromButton(bt));
+});
 
 
 
