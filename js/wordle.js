@@ -1,4 +1,5 @@
 var wordle_grid = document.getElementById("wordle-grid");
+var v_keys = document.getElementById("v-keyboard").children;
 
 var word = "";
 
@@ -29,12 +30,14 @@ async function initialize() {
 
 
 function selectWord() {
-    var rand_word = getRandomInt(words.length);
-    while (words[rand_word].length != letters) {
-        rand_word = getRandomInt(words.length);
+    for(var i = 0; i < words.length; i++) {
+        var rand_word = getRandomInt(words.length);
+        if(words[rand_word].length == letters) {
+            break;
+        }
     }
     
-    word = words[rand_word].toUpperCase();
+    word = words[rand_word].toLowerCase();
 }
 
 function setupGrid() {
@@ -62,7 +65,7 @@ function updateInput() {
         if(input[i] == undefined){
             wordle_grid.children.item(curr_row).children.item(i).innerHTML = "";
         }else{
-            wordle_grid.children.item(curr_row).children.item(i).innerHTML = input[i];
+            wordle_grid.children.item(curr_row).children.item(i).innerHTML = input[i].toUpperCase();
         }
     }
 }
@@ -71,8 +74,10 @@ function checkInput() {
     var cinput = input;
     var cword = word;
 
+    var win_result = "";
     var result = "";
     for(var i = 0; i < letters; i++) result+="W";
+    for(var i = 0; i < letters; i++) win_result+="R";
 
     for(var i = 0; i < letters; i++) {
         if(cinput[i] == cword[i]) {
@@ -107,6 +112,8 @@ function checkInput() {
             wordle_grid.children.item(curr_row).children.item(i).classList.add("grey");
         }
     }
+
+    return result.match(win_result);
 }
 
 function setupEventListener() {
@@ -118,13 +125,20 @@ function setupEventListener() {
 function pressKey(key) {
     if(input.length < letters){
         if(isLetter(key)) {
-            input+=key.toUpperCase();
+            input+=key.toLowerCase();
             updateInput();
         }
     }else if(key == "Enter") {
-        checkInput();
-        curr_row++;
-        input = "";
+        if(checkInput()) {
+            alert("Gewonnen!");
+        }else{
+            if(curr_row < rows-1) {
+                curr_row++;
+                input = "";
+            }else{
+                alert("Verloren. Gesuchtes Wort: " + word.toUpperCase());
+            }
+        }
     }
 
     if(key == "Backspace" || key == "Delete") {
@@ -135,7 +149,7 @@ function pressKey(key) {
 
 
 function isLetter(str) {
-    return str.length === 1 && str.match(/[a-z]/i);
+    return str.length === 1 && str.match(/[a-z\u00c4\u00d6\u00dc]/i);
 }
 
 String.prototype.replaceAt = function(index, replacement) {
