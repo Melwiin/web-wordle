@@ -23,10 +23,17 @@ function getKeyFromButton(button){
 }
 
 /*EVENT LISTENER*/
-const bt = document.getElementsByClassName("button");
-bt.forEach.addEventListener("click", (e)=> {
-  pressKey(getKeyFromButton(bt));
-});
+bt = document.getElementById("v-keyboard").children;
+
+
+for(var i = 0; i<bt.length; i++){
+  console.log(bt[i].innerHTML);
+  bt[i].addEventListener("click", pressKey(bt[i].innerHTML));
+}
+  
+
+
+  //element.addEventListener("click", pressKey(element.innerHTML))
 
 
 
