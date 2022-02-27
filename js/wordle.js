@@ -7,7 +7,7 @@ var word = "";
 
 var curr_row = 0;
 
-var letters = 5;
+var letters = 5; 
 var rows = 6;
 
 var input = "";
@@ -145,7 +145,6 @@ async function pressKey(key) {
     if(input.length < letters){
         if(isLetter(key)) {
             input+=key.toLowerCase();
-            console.log(input);
             updateInput();
         }
     }else if(key == "Enter") {

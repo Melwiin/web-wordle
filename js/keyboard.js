@@ -28,7 +28,7 @@ bt = document.getElementById("v-keyboard").children;
 
 for(var i = 0; i<bt.length; i++){
   console.log(bt[i].innerHTML);
-  bt[i].addEventListener("click", pressKey(bt[i].innerHTML));
+  bt[i].addEventListener("click", (e)=> pressKey(e.target.innerHTML));
 }
   
 
