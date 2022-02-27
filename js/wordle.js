@@ -27,6 +27,12 @@ async function initialize() {
     filename = lang_select.value;
     poup_wnd.classList.remove("active");
 
+    for(var i = 0; i < keys.length; i++){
+        keys[i].classList.remove("grey"); 
+        keys[i].classList.remove("yellow"); 
+        keys[i].classList.remove("green"); 
+    }
+
     await fetch('../lang/' + filename + ".json")
     .then(res => res.json())
     .then(data => { words = shuffle(data); } );
