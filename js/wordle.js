@@ -188,7 +188,7 @@ async function pressKey(key) {
        if(await wordExists() || useNonExistingWords == true) {
             if(checkInput()) {
                 poup_wnd.classList.add("active");
-                console.log("I guessed this " + letters + "-letter word in " + (curr_row+1) +"/" + rows + " tries.\n" + emojis);
+                console.log("I guessed this " + letters + "-letter word in " + (curr_row+1) +"/" + rows + " tries.\n\n" + emojis);
             }else{
                 if(curr_row < rows-1) {
                     curr_row++;
