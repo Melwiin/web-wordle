@@ -145,6 +145,7 @@ async function pressKey(key) {
     if(input.length < letters){
         if(isLetter(key)) {
             input+=key.toLowerCase();
+            console.log(input);
             updateInput();
         }
     }else if(key == "Enter") {
