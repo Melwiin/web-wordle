@@ -17,6 +17,8 @@ var input = "";
 var words;
 var useNonExistingWords = true;
 
+var emojis = "";
+
 initialize();
 setupEventListener();
 
@@ -26,6 +28,7 @@ async function initialize() {
     curr_row = 0;
     filename = lang_select.value;
     poup_wnd.classList.remove("active");
+    emojis = "";
 
     for(var i = 0; i < keys.length; i++){
         keys[i].classList.remove("grey"); 
@@ -154,12 +157,17 @@ function checkInput() {
     for(let i = 0; i < letters; i++) {
         if(result.charAt(i) == 'R'){
             wordle_grid.children.item(curr_row).children.item(i).classList.add("green");
+            emojis+="🟩";
         }else if(result.charAt(i) == 'S'){
             wordle_grid.children.item(curr_row).children.item(i).classList.add("yellow");
+            emojis+="🟨";
         }else {
             wordle_grid.children.item(curr_row).children.item(i).classList.add("grey");
+            emojis+="⬛";
         }
     }
+
+    emojis += "\n"
 
     return result.match(win_result);
 }
@@ -180,6 +188,7 @@ async function pressKey(key) {
        if(await wordExists() || useNonExistingWords == true) {
             if(checkInput()) {
                 poup_wnd.classList.add("active");
+                console.log("I guessed this " + letters + "-letter word in " + (curr_row+1) +"/" + rows + " tries.\n" + emojis);
             }else{
                 if(curr_row < rows-1) {
                     curr_row++;
