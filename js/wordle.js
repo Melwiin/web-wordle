@@ -12,7 +12,7 @@ var rows = 6;
 
 var input = "";
 var words;
-var useNonExistingWords = false;
+var useNonExistingWords = true;
 
 initialize();
 setupEventListener();
