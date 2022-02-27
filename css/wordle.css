@@ -1,4 +1,12 @@
 
+#popup-wnd {
+    position:absolute;
+    background-color: var(--popup-background-color);
+    margin: auto;
+
+
+}
+
 .row {
     display: flex;
 }
@@ -36,6 +44,7 @@
         transform: scale(1);
     }
 }
+
 
 /* wordle word check colors */
 .input.grey {

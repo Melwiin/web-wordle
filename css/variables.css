@@ -1,4 +1,8 @@
 :root {
     --button-text-color:rgb(71, 71, 71);
     --button-hover-color:rgb(206, 206, 206);
+
+    /* Pop Up Windows */
+    --popup-background-color:rgb(228, 228, 228);
+    
 }
