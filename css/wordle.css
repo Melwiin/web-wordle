@@ -3,8 +3,28 @@
     position:absolute;
     background-color: var(--popup-background-color);
     margin: auto;
-    z-index: 2;
+    z-index: 1;
 
+    padding: 2rem;
+    border: 2px solid black;
+
+    display: none;
+}
+
+#popup-wnd.active {
+    display: block;
+}
+
+#restart-btn {
+    margin: 0.8rem;
+    text-align: center;
+    padding: 0.5rem;
+    background-color: var(--button-color);
+}
+
+#restart-btn:hover {
+    cursor: pointer;
+    background-color: var(--button-hover-color);
 }
 
 .row {
@@ -22,7 +42,6 @@
     justify-content: center;
     align-items: center;
 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 700;
     font-size: 24px;
     color: rgb(104, 104, 104);

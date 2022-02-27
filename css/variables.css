@@ -1,6 +1,9 @@
 :root {
+    --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
     --button-text-color:rgb(71, 71, 71);
     --button-hover-color:rgb(206, 206, 206);
+    --button-color:rgb(191, 191, 191);
 
     /* Pop Up Windows */
     --popup-background-color:rgb(228, 228, 228);

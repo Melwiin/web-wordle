@@ -1,6 +1,7 @@
 var wordle_grid = document.getElementById("wordle-grid");
 var v_keys = document.getElementById("v-keyboard").children;
 var lang_select = document.getElementById("language-select");
+var poup_wnd = document.getElementById("popup-wnd");
 
 var keys = document.getElementById("v-keyboard").children;
 
@@ -24,6 +25,7 @@ async function initialize() {
     word = "";
     curr_row = 0;
     filename = lang_select.value;
+    poup_wnd.classList.remove("active");
 
     await fetch('../lang/' + filename + ".json")
     .then(res => res.json())
@@ -171,7 +173,7 @@ async function pressKey(key) {
     }else if(key == "Enter") {
        if(await wordExists() || useNonExistingWords == true) {
             if(checkInput()) {
-                alert("Gewonnen!");
+                poup_wnd.classList.add("active");
             }else{
                 if(curr_row < rows-1) {
                     curr_row++;
