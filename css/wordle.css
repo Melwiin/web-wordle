@@ -3,7 +3,7 @@
     position:absolute;
     background-color: var(--popup-background-color);
     margin: auto;
-
+    z-index: 2;
 
 }
 
