@@ -2,6 +2,8 @@ var wordle_grid = document.getElementById("wordle-grid");
 var v_keys = document.getElementById("v-keyboard").children;
 var lang_select = document.getElementById("language-select");
 
+var keys = document.getElementById("v-keyboard").children;
+
 var filename = "";
 var word = "";
 
@@ -89,6 +91,22 @@ function wordExists() {
     return exists;
 }
 
+async function colorKey(key, color) {
+    for(var i = 0; i < keys.length; i++)
+    {
+        var element = keys[i];
+        if(element.innerHTML == key.toUpperCase()) {
+            if(element.classList.contains("yellow") && color == "green") {
+                element.classList.remove("yellow");
+                element.classList.add("green");
+            }else{
+                element.classList.add(color);
+            }
+                
+        }
+    }
+}
+
 function checkInput() {
     var cinput = input;
     var cword = word;
@@ -103,6 +121,8 @@ function checkInput() {
             cword = cword.replaceAt(i, '#');
             cinput = cinput.replaceAt(i, '#');
             result = result.replaceAt(i, 'R');
+
+            colorKey(input[i], "green");
         }
     }
 
@@ -115,9 +135,10 @@ function checkInput() {
                 cinput = cinput.replaceAt(i, '#');
                 result = result.replaceAt(i, 'S');
 
+                colorKey(input[i], "yellow");
                 continue;
             }else {
-
+                colorKey(input[i], "grey");
             }
         }
     }
