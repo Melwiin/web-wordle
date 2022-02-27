@@ -80,6 +80,7 @@ function wordExists() {
     var exists = false;
 
     words.forEach(w => {
+        w = w.toLowerCase();    
         if(input == w) {
             exists = true;
         }
