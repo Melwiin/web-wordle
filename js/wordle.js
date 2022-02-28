@@ -1,9 +1,9 @@
+// initialisierung von Elementen
 var wordle_grid = document.getElementById("wordle-grid");
-var v_keys = document.getElementById("v-keyboard").children;
+var v_keys      = document.getElementById("v-keyboard").children;
 var lang_select = document.getElementById("language-select");
-var poup_wnd = document.getElementById("popup-wnd");
-
-var keys = document.getElementById("v-keyboard").children;
+var poup_wnd    = document.getElementById("popup-wnd");
+var keys        = document.getElementById("v-keyboard").children;
 
 var filename = "";
 var word = "";
@@ -127,6 +127,8 @@ function checkInput() {
     for(var i = 0; i < letters; i++) result+="W";
     for(var i = 0; i < letters; i++) win_result+="R";
 
+
+    //Check for green letters
     for(var i = 0; i < letters; i++) {
         if(cinput[i] == cword[i]) {
             cword = cword.replaceAt(i, '#');
@@ -137,6 +139,7 @@ function checkInput() {
         }
     }
 
+    //Check for yellow letters
     for(var i = 0; i < letters; i++) {
         for(var w = 0; w < letters; w++) {
             if(cinput.charAt(i) == '#') {
@@ -149,11 +152,13 @@ function checkInput() {
                 colorKey(input[i], "yellow");
                 continue;
             }else {
+                //Der Rest ist grau
                 colorKey(input[i], "grey");
             }
         }
     }
 
+    //Auswertung des Inputs-Checks. Emojis werden erstellt 
     for(let i = 0; i < letters; i++) {
         if(result.charAt(i) == 'R'){
             wordle_grid.children.item(curr_row).children.item(i).classList.add("green");
@@ -179,6 +184,8 @@ function setupEventListener() {
 }
 
 async function pressKey(key) {
+
+    //Wenn die Zeile noch nicht "voll" ist -> gucken ob Input ein Bcuhstabe ist
     if(input.length < letters){
         if(isLetter(key)) {
             input+=key.toLowerCase();
@@ -187,17 +194,21 @@ async function pressKey(key) {
     }else if(key == "Enter") {
        if(await wordExists() || useNonExistingWords == true) {
             if(checkInput()) {
+                //Bei richtiger Antwort (Gewonnen)
                 poup_wnd.classList.add("active");
                 console.log("I guessed this " + letters + "-letter word in " + (curr_row+1) +"/" + rows + " tries.\n\n" + emojis);
             }else{
                 if(curr_row < rows-1) {
+                    ///Bei falscher Antwort + übrige Versuche => nächster Versuch (nächste Zeile)
                     curr_row++;
                     input = "";
                 }else{
+                    //Bei falscher Antwort und aufgebrauchten Versuchen (Verloren)
                     alert("Verloren. Gesuchtes Wort: " + word.toUpperCase());
                 }
             }
         }else{
+            //bei nicht existierenden Wörtern (zmd. wenn aktiv)
             alert("Word doesnt exist!");
         }
     }
