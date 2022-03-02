@@ -17,6 +17,7 @@
 
   
   <body>
+    <h2>Melwin & Timos Wordle</h2>
     <!--POP-UP bei win-->
     <div id="popup-wnd">
       <label id="popup-msg">Du hast gewonnen!</label>
@@ -33,11 +34,6 @@
     <div id="wordle-grid"></div>
     <div id="v-keyboard"></div>
     <!-- ---------------------------------- -->
-
-    <!-- Neustart darf kein Button sein! Sonst wird er beim Fokus + Enter drücken jedes mal neu aktiviert! -->
-    <!-- <button onclick="initialize()">Neustart</button> -->
-    <!-- Stattdessen div + click-event (braucht aber styling) -->
-    <div id="restart-button" onclick="initialize()">Neustart</div> <!-- soll später in ein popup -->
 
     <!-- Erst wordle.js dann keyboard.js wegen pressKey() -->
     <script src="js/wordle.js"></script>
