@@ -6,7 +6,7 @@
     z-index: 1;
 
     padding: 2rem;
-    border: 2px solid black;
+    border: 2px solid var(--popup-border-color);
 
     display: none;
 }
@@ -35,7 +35,7 @@
     width: 3.4rem;
     height: 3.4rem;
     margin: 0.2rem;
-    border: 2px solid rgb(201, 201, 201);
+    border: 2px solid var(--input-border-color);
     border-radius: 10px;
 
     display: flex;
@@ -44,11 +44,11 @@
 
     font-weight: 700;
     font-size: 24px;
-    color: rgb(104, 104, 104);
+    color: var(--input-text-color);
 }
 
 .input.selected {
-    border-color: rgb(135, 135, 135);
+    border-color: var(--input-border-color);
 }
 
 .input.select {
@@ -88,18 +88,19 @@
 
 /* wordle word check colors */
 .input.grey {
-    background-color: rgb(208, 207, 207);
-    border-color: rgb(208, 207, 207);
-    color: white;
+    background-color: var(--none-input-bb);
+    border-color: var(--none-input-bb);
 }
 .input.green {
-    background-color: #79b851;
-    border-color: #79b851;
-    color: white;
+    background-color: var(--right-input-bb);
+    border-color: var(--right-input-bb);
 }
 .input.yellow {
-    background-color: rgb(255, 215, 82);
-    border-color: rgb(255, 215, 82);
-    color: white;
+    background-color: var(--almost-input-bb);
+    border-color: var(--almost-input-bb);
+}
+
+.input.grey, .input.yellow, .input.green {
+    color: var(--checked-input-text-color);
 }
 /* -------------------------- */
