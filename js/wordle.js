@@ -15,7 +15,7 @@ var rows = 6;
 
 var input = "";
 var words;
-var useNonExistingWords = true;
+var useNonExistingWords = false;
 
 var emojis = "";
 
@@ -38,7 +38,7 @@ async function initialize() {
 
     await fetch('../lang/' + filename + ".json")
     .then(res => res.json())
-    .then(data => { words = shuffle(data); } );
+    .then(data => { words = shuffle(data); console.log("Lang init done.")} );
     await selectWord();
     await setupGrid();
     
