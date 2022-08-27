@@ -8,15 +8,18 @@ var keys        = document.getElementById("v-keyboard").children;
 var filename = "";
 var word = "";
 
-var curr_row = 0;
-
 var letters = 5; 
+
 var rows = 6;
+var curr_row = 0;
 
 var input = "";
 var words;
-var useNonExistingWords = true;
 
+//Nicht existierende Wörter aktivieren
+var useNonExistingWords = false;
+
+//Emoji share string
 var emojis = "";
 
 initialize();
@@ -38,7 +41,7 @@ async function initialize() {
 
     await fetch('../lang/' + filename + ".json")
     .then(res => res.json())
-    .then(data => { words = shuffle(data); } );
+    .then(data => { words = shuffle(data); console.log("Lang init done.")} );
     await selectWord();
     await setupGrid();
     
@@ -67,6 +70,10 @@ function setupGrid() {
         {
             var n_letter = document.createElement("div");
             n_letter.className = "input";
+            n_letter.addEventListener("animationend", (e)=>{
+                if(e.animationName == 'select') e.target.classList.remove("select");
+                if(e.animationName == 'shake') e.target.classList.remove("shake");
+            });
     
             n_row.appendChild(n_letter);
         }
@@ -87,18 +94,18 @@ function updateInput() {
             input_element.classList.add("selected");
         }
     }
+
+
 }
 
 function wordExists() {
     var exists = false;
-
     words.forEach(w => {
-        w = w.toLowerCase();    
+        w = w.toLowerCase();
         if(input == w) {
             exists = true;
         }
     });
-
     return exists;
 }
 
@@ -189,9 +196,11 @@ async function pressKey(key) {
     if(input.length < letters){
         if(isLetter(key)) {
             input+=key.toLowerCase();
+            wordle_grid.children.item(curr_row).children.item(input.length-1).classList.add("select");
             updateInput();
         }
     }else if(key == "Enter") {
+        //Check if Word exists -> depends if useNonExistingWords is false!
        if(await wordExists() || useNonExistingWords == true) {
             if(checkInput()) {
                 //Bei richtiger Antwort (Gewonnen)
@@ -208,8 +217,15 @@ async function pressKey(key) {
                 }
             }
         }else{
-            //bei nicht existierenden Wörtern (zmd. wenn aktiv)
-            alert("Word doesnt exist!");
+            //bei nicht existierenden Wörtern (wenn aktiv)
+            for(let i = 0; i < letters; i++) {
+                wordle_grid.children.item(curr_row).children.item(i).classList.add("shake");
+            }
+            await setTimeout(()=>{
+                for(let i = 0; i < letters; i++) {
+                    wordle_grid.children.item(curr_row).children.item(i).classList.remove("shake");
+                }
+            }, 500);
         }
     }
 
