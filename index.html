@@ -1,42 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wordle by Timo & Melwin</title>
 
-    <!-- Erster CSS - Import: Variablen (Theme) -->
-    <link rel="stylesheet" href="css/variables.css">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wordle by Timo & Melwin</title>
 
-    <!-- Sonstiges Styling Keyboard, Grid etc. -->
-    <link rel="stylesheet" href="css/keyboard.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/wordle.css">
-  </head>
+  <!-- Erster CSS - Import: Variablen (Theme) -->
+  <link rel="stylesheet" href="css/variables.css" />
 
-  
-  <body>
-    <!-- <h2>Melwin & Timos Wordle</h2> -->
-    <!--POP-UP bei win-->
-    <div id="popup-wnd">
-      <label id="popup-msg">Du hast gewonnen!</label>
-      <div id="restart-btn" onclick="initialize()">Neustart</div>
-    </div>
-    <!-- Dient der Sprachauswahl -->
-    <select onchange="initialize()" id="language-select">
-      <option value="en">Englisch</option>
-      <option value="de">Deutsch</option>
-      <option value="de_j">Jugenwörter</option>
-    </select>
+  <!-- Sonstiges Styling Keyboard, Grid etc. -->
+  <link rel="stylesheet" href="css/keyboard.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/wordle.css" />
+  <link rel="stylesheet" href="css/slider.css">
+</head>
 
-    <!-- muss später in ein extra container -->
-    <div id="wordle-grid"></div>
-    <div id="v-keyboard"></div>
-    <!-- ---------------------------------- -->
+<body>
+  <!-- <h2>Melwin & Timos Wordle</h2> -->
+  <!--POP-UP bei win-->
+  <div id="popup-wnd">
+    <label id="popup-msg">Du hast gewonnen!</label>
+    <div id="restart-btn" onclick="initialize()">Neustart</div>
+  </div>
+  <!-- Dient der Sprachauswahl -->
+  <select onchange="initialize()" id="language-select">
+    <option value="en">Englisch</option>
+    <option value="de">Deutsch</option>
+    <option value="de_j">Jugenwörter</option>
+  </select>
 
-    <!-- Erst wordle.js dann keyboard.js wegen pressKey() -->
-    <script src="js/wordle.js"></script>
-    <script src="js/keyboard.js"></script>
-  </body>
+  <!-- Rounded switch -->
+  <label class="switch">
+    <input type="checkbox" id="theme-switch">
+    <span class="slider round"></span>
+  </label>
+
+  <!-- muss später in ein extra container -->
+  <div id="wordle-grid"></div>
+  <div id="v-keyboard"></div>
+  <!-- ---------------------------------- -->
+
+  <!-- Erst wordle.js dann keyboard.js wegen pressKey() -->
+  <script src="js/wordle.js"></script>
+  <script src="js/keyboard.js"></script>
+</body>
+
 </html>
