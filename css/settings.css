@@ -1,0 +1,31 @@
+#settings-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 0;
+    border-radius: 50%;
+    background-color: transparent;
+
+    transition: 200ms ease-in-out;
+}
+
+#settings-btn:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+#settings-img {
+    width: 30px;
+}
+
+#settings-menu {
+    position: absolute;
+    display: block;
+    width: 280px;
+    height: 340px;
+    background-color: rgb(239, 239, 239);
+    border: 1px solid #ccc;
+    top: 55px;
+    right: 20px;
+    border-radius: 8px;
+}

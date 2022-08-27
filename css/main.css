@@ -11,14 +11,19 @@
 
 
 body{
-    height:100vh;
+    height: 100vh;
 
     background-color: var(--background-color);
-    display:flex;
-    flex-direction:column;
+    display: grid;
+    place-items: center;
+    grid-template-rows: 80px auto auto;
     
     justify-content: space-evenly;
-    
-    align-items: center;
+}
 
+header {
+    height: 80px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
 }
