@@ -20,12 +20,22 @@
 
 #settings-menu {
     position: absolute;
-    display: block;
-    width: 280px;
-    height: 340px;
-    background-color: rgb(239, 239, 239);
-    border: 1px solid #ccc;
     top: 55px;
     right: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 50px;
+    align-items: center;
+    padding: 1rem;
+
+    width: 280px;
+    height: 340px;
+
+    background-color: rgb(239, 239, 239);
+
+    border: 1px solid #ccc;
     border-radius: 8px;
+
+    display: none;
 }
