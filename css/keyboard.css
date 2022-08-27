@@ -37,7 +37,7 @@
 
 /* wordle word check colors for virtual keyboard */
 #v-keyboard button.grey {
-    background-color: rgb(208, 207, 207);
+    background-color: var(--none-input-bb);
     border-color: rgb(208, 207, 207);
     color: white;
 }
