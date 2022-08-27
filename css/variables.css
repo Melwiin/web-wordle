@@ -1,5 +1,6 @@
 :root {
     /* font related */
+    
     --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
     /* general purpose */
@@ -7,8 +8,9 @@
 
     /* Button Colors */
     --button-text-color:#474747;
-    --button-hover-color:#cecece;
-    --button-color:#bfbfbf;
+    --button-background-color:#e1e1e1;
+    --button-hover-color:#dfdfdf;
+    --button-color:#c1c1c1;
 
     /*Input*/
     --input-text-color: #686868;
@@ -34,10 +36,11 @@
         --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
         /* general purpose */
-        --background-color: #111327;
+        --background-color: #121539;
     
         /* Button Colors */
         --button-text-color:#474747;
+        --button-background-color:#f2dbed;
         --button-hover-color:#cecece;
         --button-color:#bfbfbf;
     

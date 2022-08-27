@@ -18,6 +18,7 @@
     font-weight: 700;
     font-size: large;
     color: var(--button-text-color);
+    background-color: var(--button-background-color);
 
     /* animation */
     transition:200ms ease-in-out; 
