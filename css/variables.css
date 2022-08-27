@@ -30,9 +30,36 @@
 }
 
 [theme="dark"] {
-
+        /* font related */
+        --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+        /* general purpose */
+        --background-color: #111327;
+    
+        /* Button Colors */
+        --button-text-color:#474747;
+        --button-hover-color:#cecece;
+        --button-color:#bfbfbf;
+    
+        /*Input*/
+        --input-text-color: #686868;
+        --input-border-color: #c9c9c9;
+        --selected-input-border-color: #878787;
+    
+        /* input check colors bb = "background and border" */
+        --checked-input-text-color: white;
+        /* Buchstabe nicht vorhanden */
+        --none-input-bb: #d0cfcf;
+        /* Buchstabe woanders vorhanden */
+        --almost-input-bb: #ffd752;
+        /* Buchstabe richtig vorhanden */
+        --right-input-bb: #79b851;
+    
+        /* Pop Up Windows */
+        --popup-background-color:#e4e4e4;
+        --popup-border-color: #000000;
 }
 
 [theme="light"] {
-    
+
 }
